@@ -139,7 +139,7 @@
         <input
           matInput
           [matDatepicker]="dueDatePicker"
-          formControlName="dueDate"
+          formControlName="payee_due_date"
           [class.is-invalid]="paymentForm.get('dueDate')?.invalid && paymentForm.get('dueDate')?.touched"
         />
         <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
