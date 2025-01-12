@@ -1,0 +1,208 @@
+<div class="container">
+  <form [formGroup]="paymentForm" (ngSubmit)="submit()">
+    <!-- Payee First Name -->
+    <div class="form-group">
+      <label for="payee_first_name">First Name</label>
+      <input
+        id="payee_first_name"
+        formControlName="payee_first_name"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="paymentForm.get('payee_first_name')?.invalid && paymentForm.get('payee_first_name')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="paymentForm.get('payee_first_name')?.errors?.['required']">
+        First Name is required.
+      </div>
+    </div>
+
+    <!-- Payee Last Name -->
+    <div class="form-group">
+      <label for="payee_last_name">Last Name</label>
+      <input
+        id="payee_last_name"
+        formControlName="payee_last_name"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="paymentForm.get('payee_last_name')?.invalid && paymentForm.get('payee_last_name')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="paymentForm.get('payee_last_name')?.errors?.['required']">
+        Last Name is required.
+      </div>
+    </div>
+
+    <!-- Address Line 1 -->
+    <div class="form-group">
+      <label for="payee_address_line_1">Address Line 1</label>
+      <input
+        id="payee_address_line_1"
+        formControlName="payee_address_line_1"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="paymentForm.get('payee_address_line_1')?.invalid && paymentForm.get('payee_address_line_1')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="paymentForm.get('payee_address_line_1')?.errors?.['required']">
+        Address Line 1 is required.
+      </div>
+    </div>
+
+    <!-- Address Line 2 (Optional) -->
+    <div class="form-group">
+      <label for="payee_address_line_2">Address Line 2 (Optional)</label>
+      <input id="payee_address_line_2" formControlName="payee_address_line_2" type="text" class="form-control" />
+    </div>
+
+    <!-- City -->
+    <div class="form-group">
+      <label for="payee_city">City</label>
+      <input
+        id="payee_city"
+        formControlName="payee_city"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="paymentForm.get('payee_city')?.invalid && paymentForm.get('payee_city')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="paymentForm.get('payee_city')?.errors?.['required']">
+        City is required.
+      </div>
+    </div>
+
+    <!-- Country -->
+    <div class="form-group">
+      <label for="payee_country">Country</label>
+      <input
+        id="payee_country"
+        formControlName="payee_country"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="paymentForm.get('payee_country')?.invalid && paymentForm.get('payee_country')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="paymentForm.get('payee_country')?.errors?.['required']">
+        Country is required (ISO 3166-1 alpha-2 format).
+      </div>
+    </div>
+
+    <!-- Province/State (Optional) -->
+    <div class="form-group">
+      <label for="payee_province_or_state">Province/State (Optional)</label>
+      <input id="payee_province_or_state" formControlName="payee_province_or_state" type="text" class="form-control" />
+    </div>
+
+    <!-- Postal Code -->
+    <div class="form-group">
+      <label for="payee_postal_code">Postal Code</label>
+      <input
+        id="payee_postal_code"
+        formControlName="payee_postal_code"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="paymentForm.get('payee_postal_code')?.invalid && paymentForm.get('payee_postal_code')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="paymentForm.get('payee_postal_code')?.errors?.['required']">
+        Postal Code is required.
+      </div>
+    </div>
+
+    <!-- Phone Number -->
+    <div class="form-group">
+      <label for="payee_phone_number">Phone Number</label>
+      <input
+        id="payee_phone_number"
+        formControlName="payee_phone_number"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="paymentForm.get('payee_phone_number')?.invalid && paymentForm.get('payee_phone_number')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="paymentForm.get('payee_phone_number')?.errors?.['pattern']">
+        Enter a valid phone number (E.164 format).
+      </div>
+    </div>
+
+    <!-- Email -->
+    <div class="form-group">
+      <label for="payee_email">Email</label>
+      <input
+        id="payee_email"
+        formControlName="payee_email"
+        type="email"
+        class="form-control"
+        [class.is-invalid]="paymentForm.get('payee_email')?.invalid && paymentForm.get('payee_email')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="paymentForm.get('payee_email')?.errors?.['email']">
+        Enter a valid email address.
+      </div>
+    </div>
+
+    <!-- Due Date -->
+    <div class="form-group">
+      <mat-form-field appearance="fill">
+        <mat-label>Due Date</mat-label>
+        <input
+          matInput
+          [matDatepicker]="dueDatePicker"
+          formControlName="dueDate"
+          [class.is-invalid]="paymentForm.get('dueDate')?.invalid && paymentForm.get('dueDate')?.touched"
+        />
+        <mat-datepicker-toggle matSuffix [for]="dueDatePicker"></mat-datepicker-toggle>
+        <mat-datepicker #dueDatePicker></mat-datepicker>
+        <mat-error *ngIf="paymentForm.get('dueDate')?.errors?.['required']">
+          Due Date is required.
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <!-- Currency -->
+    <div class="form-group">
+      <label for="currency">Currency</label>
+      <input
+        id="currency"
+        formControlName="currency"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="paymentForm.get('currency')?.invalid && paymentForm.get('currency')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="paymentForm.get('currency')?.errors?.['required']">
+        Currency is required (ISO 4217 format).
+      </div>
+    </div>
+
+    <!-- Due Amount -->
+    <div class="form-group">
+      <label for="due_amount">Due Amount</label>
+      <input
+        id="due_amount"
+        formControlName="due_amount"
+        type="number"
+        class="form-control"
+        [class.is-invalid]="paymentForm.get('due_amount')?.invalid && paymentForm.get('due_amount')?.touched"
+      />
+      <div class="invalid-feedback" *ngIf="paymentForm.get('due_amount')?.errors?.['required']">
+        Due Amount is required.
+      </div>
+    </div>
+
+    <!-- Discount Percent (Optional) -->
+    <div class="form-group">
+      <label for="discount_percent">Discount Percent (Optional)</label>
+      <input
+        id="discount_percent"
+        formControlName="discount_percent"
+        type="number"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Tax Percent (Optional) -->
+    <div class="form-group">
+      <label for="tax_percent">Tax Percent (Optional)</label>
+      <input
+        id="tax_percent"
+        formControlName="tax_percent"
+        type="number"
+        class="form-control"
+      />
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" [disabled]="!paymentForm.valid">Add Payment</button>
+  </form>
+</div>
