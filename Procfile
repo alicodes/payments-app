@@ -1,0 +1,1 @@
+web: npx http-server dist/client -p $PORT
