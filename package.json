@@ -3,12 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "node sever.js",
+    "start": "serve -s dist/client -l $PORT",
     "build": "ng build --configuration=production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "heroku-postbuild": "ng build --configuration production",
-    "serve:ssr:client": "node dist/client/server/server.mjs"
+    "heroku-postbuild": "ng build --configuration production"
   },
   "private": true,
   "dependencies": {

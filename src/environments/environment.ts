@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-    API_URL: 'http://localhost:8000/'  // Backend base URL
-  };
+  production: true,
+  API_URL: 'https://payments-api-187e6604d2a7.herokuapp.com/',
+};
