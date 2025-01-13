@@ -1,1 +1,1 @@
-web: npx http-server dist/client -p $PORT -c-1
+web: npx http-server dist/client -p $PORT --push-state -d false
